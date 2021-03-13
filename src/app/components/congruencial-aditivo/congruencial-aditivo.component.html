@@ -1,0 +1,92 @@
+<div class="container">
+  <h1 class="text-center letras">Método congruencial aditivo</h1>
+  <div class="container">
+      
+      <div class="d-flex justify-content-center align-items-center">
+
+        <img *ngIf="mostrar" src="{{url+'grafico/'+ri}}" width="400px" />
+      
+      </div>
+      <div class="d-flex justify-content-center align-items-center">
+
+    <form class="col-4 mt-5" #congruencialAditivoForm="ngForm"
+      (ngSubmit)="congruencialAditivo(congruencialAditivoForm)">
+          <div class="mb-3">
+            <label class="form-label">Modulo (m):</label>
+            <input type="number" class="form-control" placeholder=" 1500" name="modulo" #modulo="ngModel"
+              [(ngModel)]="congruencialAditivoModel.m" [ngModelOptions]="{ standalone: true }" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Semilla (X0):</label>
+            <input type="number" class="form-control" placeholder=" 20" name="semilla" #semilla="ngModel"
+              [(ngModel)]="congruencialAditivoModel.x0" [ngModelOptions]="{ standalone: true }" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Multiplicador (a):</label>
+            <input type="number" class="form-control" placeholder=" 32" name="multiplicador" #multiplicador="ngModel"
+              [(ngModel)]="congruencialAditivoModel.a" [ngModelOptions]="{ standalone: true }" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Incremento (c):</label>
+            <input type="number" class="form-control" placeholder=" 20" name="incremento" #incremento="ngModel"
+              [(ngModel)]="congruencialAditivoModel.c" [ngModelOptions]="{ standalone: true }" required />
+        </div>
+          <div class="mb-3">
+            <label class="form-label">Interacciones (n):</label>
+            <input type="number" class="form-control" placeholder=" 15" name="interacciones" #interacciones="ngModel"
+              [(ngModel)]="congruencialAditivoModel.n" [ngModelOptions]="{ standalone: true }" required />
+          </div>
+      <div class="row">
+        <div class="col">
+          
+      <button type="submit" class="btn btn-success col-12 " [disabled]="congruencialAditivoForm.invalid">
+        Calcular
+      </button>
+        </div>
+        <div class="col">
+      <button type="button" class="btn btn-danger col-12" (click)="generarGrafico()" *ngIf="grafico">
+        Generar gráfico
+      </button>
+        </div>
+
+      
+  </div>
+    </form>
+      </div>
+
+  <div class="col-6 m-auto text-center " *ngIf="grafico" >
+    <div class="container mt-5" style="overflow-y: auto; overflow-x: hidden; max-height: 400px;">
+      <div class="row">
+        <div class="col">
+          <table class="table">
+            <thead class="bg-info">
+              <tr>
+                <th scope="col">XN</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="xn">
+              <tr *ngFor="let result of xn">
+                <td>{{ result }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col">
+          <table class="table">
+            <thead class="bg-info">
+              <tr>
+                <th scope="col">ri</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="ri">
+              <tr *ngFor="let result of ri">
+                <td>{{ result }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+

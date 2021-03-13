@@ -1,0 +1,171 @@
+<div class="container">
+    <h1 class="text-center letras">Simulación linea de espera</h1>
+    <div class="container">
+
+        <div class="d-flex justify-content-center align-items-center">
+            <!-- 'ALL': this.ALL, 'TILL':this.TILL, 'TISE': this.TISE, 'TIRLL': this.TIRLL,'TIISE': this.TIISE, 'TIFSE':this.TIFSE, 'TIESP':this.TIESP, 'TIESA':this.TIESA -->
+            <img *ngIf="mostrar" src="{{url+'graficols/'+ALL+'/'+TILL+'/'+TISE+'/'+TIRLL+'/'+TIISE+'/'+TIFSE+'/'+TIESP+'/'+TIESA}}" width="400px" />
+        
+        </div>
+        <!-- generar muestra inputs dinamicos para muestra -->
+        <div class="d-flex justify-content-center align-items-center">
+
+        <form class="col-5 mt-5 ">
+            <div class="row">
+                <div class="col">
+
+                    <div class="mb-3">
+                        <label class="form-label">Mui:</label>
+                        <input type="number" class="form-control" placeholder=" 15" name="nu" #nu="ngModel"
+                            [(ngModel)]="lineaEsperaModel.nu" [ngModelOptions]="{ standalone: true }" required />
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label">Landa (λ):</label>
+                        <input type="number" class="form-control" placeholder=" 0.60" name="landa" #landa="ngModel"
+                            [(ngModel)]="lineaEsperaModel.landa" [ngModelOptions]="{ standalone: true }" required />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label">Ingrese el numero de clientes:</label>
+                        <input type="number" class="form-control" placeholder=" 15" name="clientes"
+                            #clientes="ngModel" [(ngModel)]="lineaEsperaModel.clientes"
+                            [ngModelOptions]="{ standalone: true }" required />
+                    </div>
+                </div>
+            </div>
+                <button type="submit" class="btn btn-success col-12" (click)="calcular()">
+                    Calcular
+                </button>
+                <button type="button" class="btn btn-danger  col-12 mt-2" (click)="generarGrafico()" *ngIf="grafico">
+                    Generar gráfico
+                  </button>
+
+        </form>
+        </div>
+    <div class="m-auto text-center " *ngIf="grafico">
+
+    <div class="container mt-5" style="overflow-y: auto; overflow-x: hidden; max-height: 400px">
+        <div class="row">
+            <div class="col">
+                <table class="table">
+                    <thead class="bg-info">
+                        <tr>
+                            <th scope="col">ALL</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="ALL">
+                        <tr *ngFor="let result of ALL">
+                            <td>{{ result }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col">
+                <table class="table">
+                    <thead class="bg-info">
+                        <tr>
+                            <th scope="col">TILL</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="TILL">
+                        <tr *ngFor="let result of TILL">
+                            <td>{{ result }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col">
+                <table class="table">
+                    <thead class="bg-info">
+                        <tr>
+                            <th scope="col">TISE</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="TISE">
+                        <tr *ngFor="let result of TISE">
+                            <td>{{ result }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col">
+                <table class="table">
+                    <thead class="bg-info">
+                        <tr>
+                            <th scope="col">TIRLL</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="TIRLL">
+                        <tr *ngFor="let result of TIRLL">
+                            <td>{{ result }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col">
+                <table class="table">
+                    <thead class="bg-info">
+                        <tr>
+                            <th scope="col">TIISE</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="TIISE">
+                        <tr *ngFor="let result of TIISE">
+                            <td>{{ result }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col">
+                <table class="table">
+                    <thead class="bg-info">
+                        <tr>
+                            <th scope="col">TIFSE</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="TIFSE">
+                        <tr *ngFor="let result of TIFSE">
+                            <td>{{ result }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col">
+                <table class="table">
+                    <thead class="bg-info">
+                        <tr>
+                            <th scope="col">TIESP</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="TIESP">
+                        <tr *ngFor="let result of TIESP">
+                            <td>{{ result }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col">
+                <table class="table">
+                    <thead class="bg-info">
+                        <tr>
+                            <th scope="col">TIESA</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="TIESA">
+                        <tr *ngFor="let result of TIESA">
+                            <td>{{ result }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+<br><br>

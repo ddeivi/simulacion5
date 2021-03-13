@@ -1,0 +1,128 @@
+<div class="container">
+  <h1 class="text-center letras">Transformada inversa aditivo</h1>
+  <div class="container">
+    <div class="d-flex justify-content-center align-items-center">
+
+      <img *ngIf="mostrar" src="{{url+'grafico/'+ri}}" width="400px" />
+    
+    </div>
+
+
+    <div class="d-flex justify-content-center align-items-center">
+
+    <form class="col-5 mt-5" #inversoAditivoForm="ngForm" (ngSubmit)="inversaAditivo(inversoAditivoForm)">
+      <div class="row">
+        <div class="col">
+          <div class="mb-3">
+            <label class="form-label">Modulo (m):</label>
+            <input type="number" class="form-control" placeholder=" 1442" name="modulo" #modulo="ngModel"
+              [(ngModel)]="inversoAditivoModel.m" [ngModelOptions]="{ standalone: true }" required />
+          </div>
+        </div>
+        <div class="col">
+          <div class="mb-3">
+            <label class="form-label">Semilla (X0):</label>
+            <input type="number" class="form-control" placeholder=" 50" name="semilla" #semilla="ngModel"
+              [(ngModel)]="inversoAditivoModel.x0" [ngModelOptions]="{ standalone: true }" required />
+          </div>
+        </div>
+        
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="mb-3">
+            <label class="form-label">Multiplicador (a):</label>
+            <input type="number" class="form-control" placeholder=" 12" name="multiplicador" #multiplicador="ngModel"
+              [(ngModel)]="inversoAditivoModel.a" [ngModelOptions]="{ standalone: true }" required />
+          </div>
+        </div>
+        <div class="col">
+          <div class="mb-3">
+            <label class="form-label">Incremento (c):</label>
+            <input type="number" class="form-control" placeholder=" 15" name="incremento" #incremento="ngModel"
+              [(ngModel)]="inversoAditivoModel.c" [ngModelOptions]="{ standalone: true }" required />
+          </div>
+        </div>
+       
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="mb-3">
+            <label class="form-label">Interacciones (n):</label>
+            <input type="number" class="form-control" placeholder=" 15" name="interacciones" #interacciones="ngModel"
+              [(ngModel)]="inversoAditivoModel.n" [ngModelOptions]="{ standalone: true }" required />
+          </div>
+        </div>
+        <div class="col">
+          <div class="mb-3">
+            <label class="form-label">Landa (λ):</label>
+            <input type="number" class="form-control" placeholder=" 0.60" name="landa" #landa="ngModel"
+              [(ngModel)]="inversoAditivoModel.landa" [ngModelOptions]="{ standalone: true }" required />
+          </div>
+        </div>
+      </div>
+      
+        
+        <button type="submit" class="btn btn-success col-12" [disabled]="inversoAditivoForm.invalid">
+          Calcular
+        </button>
+        <button type="button" class="btn btn-danger  col-12 mt-2" (click)="generarGrafico()" *ngIf="grafico">
+          Generar gráfico
+        </button>
+
+    </form>
+  </div>
+  </div>
+  
+  <div class="m-auto text-center " *ngIf="grafico">
+    <div class="container mt-5" style="overflow-y: auto; overflow-x: hidden; max-height: 400px;">
+      <div class="row">
+        <div class="col">
+          <table class="table">
+            <thead class="bg-info">
+              <tr>
+                <th scope="col">XN</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="xn">
+              <tr *ngFor="let result of xn">
+                <td>{{ result }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col">
+          <table class="table">
+            <thead class="bg-info">
+              <tr>
+                <th scope="col">ri</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="ri">
+              <tr *ngFor="let result of ri">
+                <td>{{ result }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col">
+          <table class="table">
+            <thead class="bg-info">
+              <tr>
+                <th scope="col">Inversa</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="inversa">
+              <tr *ngFor="let result of inversa">
+                <td>{{ result }}</td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+</div>
+</div>
+</div>
+
+<br><br>
+

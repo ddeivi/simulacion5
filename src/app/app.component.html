@@ -1,0 +1,57 @@
+<div class="col-12">
+  <h3 class="letras">Modelamiento y Simulación</h3>
+<nav class="menu">
+  <ol>
+    <li class="menu-item"><a [routerLink]="['/']">Inicio</a></li>
+
+    <li class="menu-item"><a style="cursor:pointer">Randoms</a>
+      <ol class="sub-menu">
+      
+        <li class="menu-item"><a [routerLink]="['/cuadrado-medio']" class="menu-item">Cuadrado Medio</a></li>
+        <li class="menu-item"><a [routerLink]="['/congruencial-lineal']" class="menu-item">Congruencial Aditivo</a></li>
+        <li class="menu-item"><a [routerLink]="['/congruencial-multiplicativo']" class="menu-item">Congruencial Multiplicativo</a></li>
+      </ol>
+    
+    </li>
+    
+   
+    <li class="menu-item"><a style="cursor:pointer">Probabilisticos</a>
+      <ol class="sub-menu">
+        <li class="menu-item"><a [routerLink]="['/promedio-movil']" class="menu-item"> Promedio Movil</a></li>
+        <li class="menu-item"><a [routerLink]="['/asilamiento-exponencial']" class="menu-item">Alisamiento Exponencial</a></li>
+      </ol>
+    
+    </li>
+
+
+    <li class="menu-item">
+      <a style="cursor:pointer">Regresión</a>
+      <ol class="sub-menu">
+        <li class="menu-item"><a [routerLink]="['/regresion-lineal']" class="menu-item">Lineal</a></li>
+            <li class="menu-item"><a [routerLink]="['/regresion-no-lineal']" class="menu-item">No lineal</a></li>
+      </ol>
+    </li>
+    <li class="menu-item">
+      <a style="cursor:pointer">Simulación</a>
+      <ol class="sub-menu">
+        <li class="menu-item"><a [routerLink]="['/montecarlo']" class="menu-item"> Montecarlo</a></li>
+        <li class="menu-item"><a [routerLink]="['/inversa-aditiva']" class="menu-item">Inversa Aditiva</a></li>
+        <li class="menu-item"><a [routerLink]="['/inversa-multiplicativa']" class="menu-item">Inversa Multiplicativa</a></li>
+      </ol>
+    </li>
+    <li class="menu-item"><a style="cursor:pointer">Modelos</a>
+      <ol class="sub-menu">
+        <li class="menu-item"><a [routerLink]="['/linea-espera']" class="menu-item">Linea de espera</a></li>
+        <li class="menu-item"><a [routerLink]="['/inventario']" class="menu-item">Modelo inventario</a></li>
+      </ol>
+    
+    </li>
+  </ol>
+</nav>
+</div>
+<br><br>  
+<div class="container">
+<router-outlet>
+  
+</router-outlet>
+</div>

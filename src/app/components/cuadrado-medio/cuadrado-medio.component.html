@@ -1,0 +1,94 @@
+<div class="container">
+  <h1 class="text-center letras">Método cuadrado medio</h1>
+  <div class="container">
+    <br><br>
+
+<div class="d-flex justify-content-center align-items-center">
+
+  <img *ngIf="mostrar" src="{{url+'grafico/'+ri}}" width="400px" />
+
+</div>
+    <div class="d-flex justify-content-center align-items-center">
+      
+
+      <form class="col-4 mt-5" #cuadradoMedioForm="ngForm" (ngSubmit)="cuadradoMedio(cuadradoMedioForm)">
+        <div class="mb-3">
+          <label class="form-label">Valor semilla:</label>
+          <input type="number" class="form-control" placeholder=" 4536" name="semilla" #semilla="ngModel"
+            [(ngModel)]="cuadradoMedioModel.r" [ngModelOptions]="{ standalone: true }" required />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Número de interacciones</label>
+          <input type="number" class="form-control" placeholder=" 20" #interacciones="ngModel"
+            [(ngModel)]="cuadradoMedioModel.n" [ngModelOptions]="{ standalone: true }" required />
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <button type="submit" class="btn btn-success col-12" [disabled]="cuadradoMedioForm.invalid">
+              Calcular
+            </button>
+          </div>
+
+          <div class="col">
+
+          <button type="button" class="btn btn-danger col-12" (click)="generarGrafico()" *ngIf="grafico">
+            Generar gráfico
+          </button>
+        </div>
+    </div>
+
+    </form>
+  </div>
+
+
+  <div class="col-8 m-auto text-center " *ngIf="grafico">
+    <div class="container mt-5 " style="overflow-y: auto; overflow-x: hidden; max-height: 400px;">
+      <div class="row">
+        <div class="col">
+          <table class="table">
+            <thead class="bg-info">
+              <tr>
+                <th scope="col">X2</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="x2">
+              <tr *ngFor="let result of x2">
+                <td>{{ result }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col">
+          <table class="table">
+            <thead class="bg-info">
+              <tr>
+                <th scope="col">Xi</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="xi">
+              <tr *ngFor="let result of xi">
+                <td>{{ result }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col">
+          <table class="table">
+            <thead class="bg-info">
+              <tr>
+                <th scope="col">ri</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="ri">
+              <tr *ngFor="let result of ri">
+                <td>{{ result }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

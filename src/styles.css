@@ -1,0 +1,27 @@
+body{
+    background: rgb(202, 202, 202);
+
+}
+.btn-success {
+    background-color: #BFF098;
+    border-color: #BFF098;
+    color: black;
+}
+
+.letras {
+    font-family: cursive;
+    text-align: center;
+    margin-top: 20px;
+    
+
+  }
+  .btn-danger {
+      background-color: #EA8D8D;
+      border-color: #EA8D8D;
+      
+  }
+
+  .bg-info {
+    background-color:  #A890FE !important;
+    /* --gradient-color: #6FD6FF !important; */
+  }

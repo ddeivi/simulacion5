@@ -1,0 +1,188 @@
+<div class="container">
+    <h1 class="text-center letras">Simulación modelo inventario</h1>
+    <div class="container">
+
+        <div class="col mt-5 m-auto text-center " *ngIf="result">
+            <table class="table">
+                <thead class="bg-info">
+                    <tr>
+                        <th scope="col">Q</th>
+                        <th scope="col">CoT</th>
+                        <th scope="col">ChT</th>
+                        <th scope="col">MOO</th>
+                        <th scope="col">CTT</th>
+                        <th scope="col">Total de pedidos</th>
+                        <th scope="col">Punto de reorden</th>
+                        <th scope="col">Tiempo de Pedido</th>
+        
+                    </tr>
+                </thead>
+                <tbody *ngIf="result">
+                    <tr>
+                        <td>{{ result.q }}</td>
+        
+                        <td>{{ result.cot }}</td>
+                        <td>{{ result.cht }}</td>
+                        <td>{{ result.moq }}</td>
+                        <td>{{ result.ctt }}</td>
+                        <td>{{ result.n }}</td>
+                        <td>{{ result.r }}</td>
+                        <td>{{ result.t }}</td>
+        
+                    </tr>
+                </tbody>
+            </table>
+        
+        
+        
+        
+        </div>
+        
+        <div class="d-flex justify-content-center align-items-center">
+
+            <form class="col-6 mt-5" #inventarioForm="ngForm" (ngSubmit)="inventario(inventarioForm)">
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label class="form-label">Demanda (D):</label>
+                            <input type="number" class="form-control" placeholder=" 500" name="D" #D="ngModel"
+                                [(ngModel)]="inventarioModel.D" [ngModelOptions]="{ standalone: true }" required />
+                        </div>
+                    </div>
+                    <div class="col">
+
+                        <div class="mb-3">
+                            <label class="form-label">Costo al ordenar (Co):</label>
+                            <input type="number" class="form-control" placeholder=" 200" name="Co" #Co="ngModel"
+                                [(ngModel)]="inventarioModel.Co" [ngModelOptions]="{ standalone: true }" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+
+                        <div class="mb-3">
+                            <label class="form-label">Costo mantenimiento (Ch):</label>
+                            <input type="number" class="form-control" placeholder=" 100" name="Ch" #Ch="ngModel"
+                                [(ngModel)]="inventarioModel.Ch" [ngModelOptions]="{ standalone: true }" required />
+                        </div>
+                    </div>
+
+                <div class="col">
+
+                    <div class="mb-3">
+                        <label class="form-label">Costo del producto (P):</label>
+                        <input type="number" class="form-control" placeholder=" 150" name="P" #P="ngModel"
+                            [(ngModel)]="inventarioModel.P" [ngModelOptions]="{ standalone: true }" required />
+                    </div>
+                </div>
+                </div>
+                <div class="row">
+                <div class="col">
+
+                    <div class="mb-3">
+                        <label class="form-label">Tiempo de espera (T):</label>
+                        <input type="number" class="form-control" placeholder=" 60" name="Tespera" #Tespera="ngModel"
+                            [(ngModel)]="inventarioModel.Tespera" [ngModelOptions]="{ standalone: true }" required />
+                    </div>
+                </div>
+                <div class="col">
+
+                    <div class="mb-3">
+                        <label class="form-label">Dias/Año:</label>
+                        <input type="number" class="form-control" placeholder=" 365" name="DiasAno" #DiasAno="ngModel"
+                            [(ngModel)]="inventarioModel.DiasAno" [ngModelOptions]="{ standalone: true }" required />
+                    </div>
+                </div>
+        </div>
+
+        <button type="submit" class="btn btn-success col-12" [disabled]="inventarioForm.invalid">
+            Calcular
+        </button>
+
+        </form>
+    </div>
+</div>
+<br><br>
+
+
+
+</div>
+
+<div class="container mt-5 m-auto text-center " style="overflow-y: auto; overflow-x: hidden; max-height: 400px"
+    *ngIf="result">
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead class="bg-info">
+                    <tr>
+                        <th scope="col">Q</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="Q">
+                    <tr *ngFor="let result of Q">
+                        <td>{{ result }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col">
+            <table class="table">
+                <thead class="bg-info">
+                    <tr>
+                        <th scope="col">Costo de ordenar</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="costoOrdenar">
+                    <tr *ngFor="let result of costoOrdenar">
+                        <td>{{ result }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col">
+            <table class="table">
+                <thead class="bg-info">
+                    <tr>
+                        <th scope="col">Costo Mantenimiento</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="costoMantenimiento">
+                    <tr *ngFor="let result of costoMantenimiento">
+                        <td>{{ result }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col">
+            <table class="table">
+                <thead class="bg-info">
+                    <tr>
+                        <th scope="col">Costo Mínimo total</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="costoMinimo">
+                    <tr *ngFor="let result of costoMinimo">
+                        <td>{{ result }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col">
+            <table class="table">
+                <thead class="bg-info">
+                    <tr>
+                        <th scope="col">Diferencia</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="diferencia">
+                    <tr *ngFor="let result of diferencia">
+                        <td>{{ result }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- end tabla -->
+    </div>
+</div>

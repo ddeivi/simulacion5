@@ -1,0 +1,118 @@
+<div class="container">
+    <h1 class="text-center letras">Método regresion lineal</h1>
+    <div class="container">
+        <div class="d-flex justify-content-center align-items-center">
+
+        <form class="col-8 mt-5" #regresionLinealForm="ngForm" (ngSubmit)="regresionLineal(regresionLinealForm)">
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label">X </label>
+                        <textarea type="text" class="form-control" placeholder="1,2,3,4,5" name="x"
+                            #x="ngModel" [(ngModel)]="regresionLinealModel.x" [ngModelOptions]="{ standalone: true }"
+                            style="height: 100px" required>
+                        </textarea>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label">Y</label>
+                        <textarea type="text" class="form-control" placeholder="6,7,8,9,10" name="y"
+                            #y="ngModel" [(ngModel)]="regresionLinealModel.y" [ngModelOptions]="{ standalone: true }"
+                            style="height: 100px" required>
+                        </textarea>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-success col-12" [disabled]="regresionLinealForm.invalid">
+                Calcular
+            </button>
+         
+        </form>
+        </div>
+        
+
+
+
+        <!-- tabla -->
+        <div class="m-auto text-center " *ngIf="grafico">
+
+        <div class="container mt-5" style="overflow-y: auto; overflow-x: hidden; max-height: 400px">
+            <div class="row">
+                <div class="col">
+                    <table class="table">
+                        <thead class="bg-info">
+                            <tr>
+                                <th scope="col">X</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngIf="xcopy">
+                            <tr *ngFor="let result of xcopy">
+                                <td>{{ result }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col">
+                    <table class="table">
+                        <thead class="bg-info">
+                            <tr>
+                                <th scope="col">Y</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngIf="ycopy">
+                            <tr *ngFor="let result of ycopy">
+                                <td>{{ result }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col">
+                    <table class="table">
+                        <thead class="bg-info">
+                            <tr>
+                                <th scope="col">X^2</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngIf="x2">
+                            <tr *ngFor="let result of x2">
+                                <td>{{ result }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col">
+                    <table class="table">
+                        <thead class="bg-info">
+                            <tr>
+                                <th scope="col">XY</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngIf="xy">
+                            <tr *ngFor="let result of xy">
+                                <td>{{ result }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col">
+                    <table class="table">
+                        <thead class="bg-info">
+                            <tr>
+                                <th scope="col">Y^2</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngIf="y2">
+                            <tr *ngFor="let result of y2">
+                                <td>{{ result }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- end tabla -->
+    </div>
+</div>
+</div>

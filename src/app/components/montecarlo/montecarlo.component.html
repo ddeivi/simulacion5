@@ -1,0 +1,183 @@
+<div class="container">
+    <h1 class="text-center letras">Método montecarlo</h1>
+    <div class="container">
+        <div class="d-flex justify-content-center align-items-center">
+
+
+        <form class="col-5 mt-5" #montecarloForm="ngForm" (ngSubmit)="montecarlo(montecarloForm)">
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label">Modulo (m):</label>
+                        <input type="number" class="form-control" placeholder=" 1542" name="modulo" #modulo="ngModel"
+                            [(ngModel)]="montecarloModel.m" [ngModelOptions]="{ standalone: true }" required />
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label">Semilla (X0):</label>
+                        <input type="number" class="form-control" placeholder=" 45" name="semilla" #semilla="ngModel"
+                            [(ngModel)]="montecarloModel.x0" [ngModelOptions]="{ standalone: true }" required />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label">Multiplicador (a):</label>
+                        <input type="number" class="form-control" placeholder=" 12" name="multiplicador"
+                            #multiplicador="ngModel" [(ngModel)]="montecarloModel.a"
+                            [ngModelOptions]="{ standalone: true }" required />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+
+                    <div class="mb-3">
+                        <label class="form-label">Incremento (c):</label>
+                        <input type="number" class="form-control" placeholder=" 12" name="incremento"
+                            #incremento="ngModel" [(ngModel)]="montecarloModel.c"
+                            [ngModelOptions]="{ standalone: true }" required />
+                    </div>
+                </div>
+                <div class="col">
+
+                    <div class="mb-3">
+                        <label class="form-label">Interacciones (n):</label>
+                        <input type="number" class="form-control" placeholder=" 10" name="interacciones"
+                            #interacciones="ngModel" [(ngModel)]="montecarloModel.n"
+                            [ngModelOptions]="{ standalone: true }" required />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                
+            <div class="col">
+            <div class="mb-3 ">
+                <label class="form-label">Valores de la muestra</label>
+                <textarea type="text" class="form-control col-12" placeholder="45,12,45,211,32,45,44,11" name="lista"
+                    #lista="ngModel" [(ngModel)]="montecarloModel.lista" [ngModelOptions]="{ standalone: true }"
+                    style="height: 100px; width: 100%;" required>
+              </textarea>
+            </div>
+            </div>
+            </div>
+            <button type="submit" class="btn btn-success col-12" [disabled]="montecarloForm.invalid">
+                Calcular
+            </button>
+
+
+        </form>
+        </div>
+
+    </div>
+
+    <br><br>
+    <div class="m-auto text-center " *ngIf="grafico">
+
+    <!-- tabla -->
+    <div class="container mt-5" style="overflow-y: auto; overflow-x: hidden; max-height: 400px">
+        <div class="row">
+            <div class="col">
+                <table class="table">
+                    <thead class="bg-info">
+                        <tr>
+                            <th scope="col">Muestra</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="muestra">
+                        <tr *ngFor="let result of muestra">
+                            <td>{{ result }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col">
+                <table class="table">
+                    <thead class="bg-info">
+                        <tr>
+                            <th scope="col">Probabilidad</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="probabilidad">
+                        <tr *ngFor="let result of probabilidad">
+                            <td>{{ result }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col">
+                <table class="table">
+                    <thead class="bg-info">
+                        <tr>
+                            <th scope="col">FPA</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="FPA">
+                        <tr *ngFor="let result of FPA">
+                            <td>{{ result }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col">
+                <table class="table">
+                    <thead class="bg-info">
+                        <tr>
+                            <th scope="col">Min</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="min">
+                        <tr *ngFor="let result of min">
+                            <td>{{ result }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col">
+                <table class="table">
+                    <thead class="bg-info">
+                        <tr>
+                            <th scope="col">Max</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="max">
+                        <tr *ngFor="let result of max">
+                            <td>{{ result }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col">
+                <table class="table">
+                    <thead class="bg-info">
+                        <tr>
+                            <th scope="col">ri</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="ri">
+                        <tr *ngFor="let result of ri">
+                            <td>{{ result }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col">
+                <table class="table">
+                    <thead class="bg-info">
+                        <tr>
+                            <th scope="col">Simulacion</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="simulacion">
+                        <tr *ngFor="let result of simulacion">
+                            <td>{{ result }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- end tabla -->
+    </div>
+</div>
