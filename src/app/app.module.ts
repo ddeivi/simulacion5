@@ -19,6 +19,7 @@ import { InversaMultiplicativoComponent } from './components/inversa-multiplicat
 import { LineaEsperaComponent } from './components/linea-espera/linea-espera.component';
 import { ModeloInventarioComponent } from './components/modelo-inventario/modelo-inventario.component';
 import { HomeComponent } from './components/home/home.component';
+import { EstadisticosComponent } from './components/estadisticos/estadisticos.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { HomeComponent } from './components/home/home.component';
     InversaMultiplicativoComponent,
     LineaEsperaComponent,
     ModeloInventarioComponent,
-    HomeComponent
+    HomeComponent,
+    EstadisticosComponent
   ],
   imports: [
     BrowserModule,

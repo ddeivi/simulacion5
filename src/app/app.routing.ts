@@ -8,6 +8,7 @@ import { CongruencialMultiplicativoComponent } from './components/congruencial-m
 
 // importar componentes
 import { CuadradoMedioComponent } from './components/cuadrado-medio/cuadrado-medio.component';
+import { EstadisticosComponent } from './components/estadisticos/estadisticos.component';
 import { HomeComponent } from './components/home/home.component';
 import { InversaAditivoComponent } from './components/inversa-aditivo/inversa-aditivo.component';
 import { InversaMultiplicativoComponent } from './components/inversa-multiplicativo/inversa-multiplicativo.component';
@@ -39,6 +40,7 @@ const appRoutes: Routes = [
       {path: 'inversa-multiplicativa', component: InversaMultiplicativoComponent},
       {path: 'linea-espera', component: LineaEsperaComponent},
       {path: 'inventario', component: ModeloInventarioComponent},
+      {path: 'estadisticos', component: EstadisticosComponent},
 
 
     //   {path: '**', component: HomeComponent},

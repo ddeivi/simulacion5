@@ -96,6 +96,13 @@ export class Service {
 
     }
 
+    estadisticos(datos): Observable<any> {
+
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+        return this._http.post(this.url + 'estadisticos/', datos, { headers: headers });
+
+    }
+
 
     // GRAFICOS
 
@@ -111,6 +118,7 @@ export class Service {
         return this._http.post(this.url + 'graficopm/', datos, { headers: headers });
 
     }
+
 
 
 

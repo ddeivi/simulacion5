@@ -4,32 +4,29 @@ import { Service } from 'src/app/services/service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-promedio-movil',
-  templateUrl: './promedio-movil.component.html',
-  styleUrls: ['./promedio-movil.component.css'],
+  selector: 'app-estadisticos',
+  templateUrl: './estadisticos.component.html',
+  styleUrls: ['./estadisticos.component.css'],
   providers:[Service]
 })
-export class PromedioMovilComponent implements OnInit {
+export class EstadisticosComponent implements OnInit {
   public muestra;
   public lista = [];
-  
-  public x;
-  public MMO3;
-  public MMO4;
-  public eMM3;
-  public eMM4;
+
   public grafico = false;
   public mostrar = false
   public url = global.url;
-
+  public x;
+  public media;
+  public mediana;
+  public moda;
 
   constructor(private _service: Service) { }
 
   ngOnInit(): void {
-
   }
 
-
+  
   aggMuestra(){
 
     if (this.muestra) {
@@ -41,13 +38,14 @@ export class PromedioMovilComponent implements OnInit {
       
     });  
 
-    this._service.promedioMovil(this.lista).subscribe(
+    this._service.estadisticos(this.lista).subscribe(
       response => {
-        this.x = response.MUESTRA;
-        this.MMO3 = response.MM03;
-        this.MMO4 = response.MMO4;
-        this.eMM3 = response.eMM03;
-        this.eMM4 = response.eMM04;
+        console.log(response)
+        this.x = response.Datos;
+        this.media = response.media;
+        this.mediana = response.mediana;
+        this.moda = response.moda;
+        // this.eMM4 = response.eMM04;
         this.lista = []
         
         this.grafico = true;
@@ -66,7 +64,7 @@ export class PromedioMovilComponent implements OnInit {
   }
 
   }
-  
+
   limpiar(){
     this.muestra = '';
 

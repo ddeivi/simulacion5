@@ -1,0 +1,96 @@
+<div class="container">
+    <h1 class="text-center letras">Media Mediana y Moda</h1>
+    <div class="container">
+        <div class="d-flex justify-content-center align-items-center">
+
+            <img *ngIf="mostrar" src="{{url+'grafico/'+x}}" width="400px" />
+
+        </div>
+        <!-- generar muestra inputs dinamicos para muestra -->
+        <div class="d-flex justify-content-center align-items-center">
+            <form class="col-4 mt-5 ">
+                <div class="mb-3">
+                    <label class="form-label">Agregue la muestra separada con una coma</label>
+                    <textarea type="text" class="form-control" placeholder="105,455,412,685,454,121,787,455"
+                        [(ngModel)]="muestra" [ngModelOptions]="{ standalone: true }" style="height: 150px"
+                        required></textarea>
+                </div>
+                <button type="submit" class="btn btn-success col-12" (click)="aggMuestra()">
+                    Calcular
+                </button>
+                <button type="button" class="btn btn-danger col-12 mt-2" (click)="generarGrafico()" *ngIf="grafico">
+                    Generar gráfico
+                  </button>
+                
+            </form>
+        </div>
+        <div class="col m-auto text-center " *ngIf="grafico" >
+
+        <div class="container mt-5" style="overflow-y: auto; overflow-x: hidden; max-height: 400px">
+            <div class="row">
+                <div class="col">
+                    <table class="table">
+                        <thead class="bg-info">
+                            <tr>
+                                <th scope="col">MUESTRA</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngIf="x">
+                            <tr *ngFor="let result of x">
+                                <td>{{ result }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col">
+                    <table class="table">
+                        <thead class="bg-info">
+                            <tr>
+                                <th scope="col">MEDIA</th>
+                            </tr>
+                        </thead>
+                        <tbody  *ngIf="media">
+                            <tr >
+                                <td>{{media}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col">
+                    <table class="table">
+                        <thead class="bg-info">
+                            <tr>
+                                <th scope="col">MEDIANA</th>
+                            </tr>
+                        </thead>
+                        <tbody  *ngIf="mediana">
+                            <tr >
+                                <td>{{ mediana }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col">
+                    <table class="table">
+                        <thead class="bg-info">
+                            <tr>
+                                <th scope="col">MODA</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngIf="moda">
+                            <tr>
+                                <td>{{ moda }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+               
+            </div>
+        </div> 
+
+         </div>
+    </div>
+</div>
+<br><br>
+
+  
